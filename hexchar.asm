@@ -40,9 +40,9 @@ carry:
     jmp exit
 
 print:                  # prints anything in bl
-    shr bl, 4           # counteract what we did before to line up a-f with A-F and 0-5
+    shr bl, 4           # counteract what we did before to line up a-f with A-F and 0-5, might split and move above sub in line 36 to exchange for dec
     cmp bl, 9
-    jg err              # all numbers we're concerned with are between 00000000-00001010
+    ja err              # all numbers we're concerned with are between 00000000-00001010
     xor bl, 48          # effectively adds 48 because 16 and 32 bits are empty, sends 0x0 to ascii 0
     mov byte ptr [rip + buf], bl
                         # load bl into the buffer
