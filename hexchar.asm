@@ -28,8 +28,8 @@ _start:
     jmp exit
 
 carry:
-#    cmp bl, 96         # errors out for g-i trust (couldn't get this to work D:)
-#    jnbe err
+    cmp bl, 48         # errors out for g-i trust (couldn't get this to work D:)        update: figured it out
+    ja err
     mov bh, bl          # temporarily move into b higher
     mov bl, 16           # put in 16 to print 1, after >> 4 this = 1
     call print
